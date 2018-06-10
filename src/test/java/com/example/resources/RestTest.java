@@ -1,4 +1,4 @@
-package com.example;
+package com.example.resources;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -10,6 +10,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.junit.After;
 import org.junit.Before;
 
+import com.example.JsonProvider;
 import com.example.main.Server;
 
 public abstract class RestTest {
