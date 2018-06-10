@@ -7,12 +7,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.example.BasicDefinition;
-import com.example.BasicResponse;
+import com.example.bean.BasicResponse;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
 
-@Api(value = "Authentication tests", authorizations = @Authorization(BasicDefinition.BASIC_AUTH_SCHEME))
+@Api("Testes de autenticação")
 @Path("hello")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,6 +22,7 @@ public class AuthenticationResource {
     @Path("auth")
     @GET
     @Authenticated
+    @ApiOperation(value = "Método autenticado. Necessário autorizar com o usuário 'user' e senha '123456'", authorizations = @Authorization(BasicDefinition.BASIC_AUTH_SCHEME))
     public BasicResponse helloAuth() {
         return new BasicResponse(true, "Hello Authenticated!");
     }

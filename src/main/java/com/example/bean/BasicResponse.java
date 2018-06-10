@@ -1,4 +1,4 @@
-package com.example;
+package com.example.bean;
 
 /**
  * @author erico.lutzer

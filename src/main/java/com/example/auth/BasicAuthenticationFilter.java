@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
 
-import com.example.BasicResponse;
+import com.example.bean.BasicResponse;
 
 /**
  * @author erico.lutzer
