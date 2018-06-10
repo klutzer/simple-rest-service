@@ -16,7 +16,8 @@ import io.swagger.jaxrs.listing.SwaggerSerializers;
 public class RestApplication extends ResourceConfig {
 
 	public RestApplication() {
-		register(JacksonFeature.class).packages(true, getClass().getPackage().getName());
+		register(JacksonFeature.class);
+		packages(true, getClass().getPackage().getName());
 		registerClasses(ApiListingResource.class, SwaggerSerializers.class);
 		register(new LoggingFeature(Logger.getLogger(getClass().getName()), Level.INFO, LoggingFeature.Verbosity.PAYLOAD_TEXT, 8192));
 		configureSwagger();

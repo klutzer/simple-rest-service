@@ -12,7 +12,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 @Provider
 public class JsonProvider implements ContextResolver<ObjectMapper> {
 	
-	public static final String DEFAULT_DATE_PATTERN = "dd/MM/yyyy";
 	private final ObjectMapper mapper = new CustomMapper();
 
 	@Override
