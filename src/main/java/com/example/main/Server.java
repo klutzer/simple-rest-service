@@ -14,7 +14,7 @@ import com.example.RestApplication;
 public class Server {
     private static final String DEFAULT_HOST = "localhost";
     private static final String DEFAULT_PORT = "8888";
-    private static final String URL = "http://%s:%s/";
+    private static final String URL = "http://%s:%s";
     public static String host;
     public static String port;
 
@@ -31,7 +31,11 @@ public class Server {
         String url = String.format(URL, host, port);
 
         final HttpServer server = startServer(url);
-        System.out.printf("Servico REST criado com WADL disponivel em %sapplication.wadl%nPressine ENTER para parar...%n", url);
+        System.out.println("=======================================================================================");
+        System.out.println("Servico REST criado com sucesso!");
+        System.out.printf("WADL disponivel em %s/application.wadl%n", url);
+        System.out.printf("Documentação interativa (swagger) disponivel em %s%n", url);
+        System.out.println("Pressine ENTER para parar...");
         System.in.read();
         server.shutdownNow();
     }
