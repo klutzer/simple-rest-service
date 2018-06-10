@@ -33,4 +33,10 @@ public class CustomerResourceTest extends RestTest {
 		Customer returned = target.path("customer").request().post(Entity.json(customer), Customer.class);
 		MatcherAssert.assertThat(returned.getId(), Matchers.greaterThan(2));
 	}
+
+	@Test
+	public void testDeleteCustomer() {
+		Customer customer = target.path("customer").path("1").request().delete(Customer.class);
+		MatcherAssert.assertThat(customer.getName(), Matchers.equalTo("Érico"));
+	}
 }
