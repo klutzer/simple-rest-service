@@ -34,7 +34,7 @@ public class Server {
 		System.out.println("=======================================================================================");
 		System.out.println("Servico REST criado com sucesso!");
 		System.out.printf("WADL disponivel em %s/application.wadl%n", url);
-		System.out.printf("Documentação interativa (swagger) disponivel em %s%n", url);
+		System.out.printf("Documentacao interativa (swagger) disponivel em %s%n", url);
 		System.out.println("Pressine ENTER para parar...");
 		System.in.read();
 		server.shutdownNow();

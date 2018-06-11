@@ -17,6 +17,7 @@ public class Customer {
 	@JsonFormat(pattern = DEFAULT_DATE_PATTERN)
 	private LocalDate birthday;
 	private boolean enable;
+	@ApiModelProperty(example = "1500.50")
 	private Double salary;
 	private Address address;
 	private List<Phone> phones;
