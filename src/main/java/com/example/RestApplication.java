@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.logging.LoggingFeature;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.example.main.Server;
@@ -17,6 +18,7 @@ public class RestApplication extends ResourceConfig {
 
 	public RestApplication() {
 		register(JacksonFeature.class);
+		register(MultiPartFeature.class);
 		packages(true, getClass().getPackage().getName());
 		registerClasses(ApiListingResource.class, SwaggerSerializers.class);
 		register(new LoggingFeature(Logger.getLogger(getClass().getName()), Level.INFO, LoggingFeature.Verbosity.PAYLOAD_TEXT, 8192));
