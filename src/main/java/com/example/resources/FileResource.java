@@ -19,6 +19,7 @@ import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import com.example.bean.BasicResponse;
+import com.example.bean.Customer;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -38,6 +39,25 @@ public class FileResource {
 			@FormDataParam("file") FormDataContentDisposition fileDetails) {
 		BasicResponse response = new BasicResponse();
 		response.setMessage("Loaded " + fileDetails.getFileName() + " with content:\n" + readContent(is));
+		response.setSuccess(true);
+		return response;
+	}
+
+	@ApiImplicitParams({ @ApiImplicitParam(required = true, dataType = "file", paramType = "formData", name = "files"),
+		@ApiImplicitParam(required = true, dataType = "string", paramType = "formData", name = "customer")})
+	@ApiOperation("Exemplo de endpoint recebendo um arquivo e também um JSON utilizando multipart/form-data")
+	@POST
+	@Path("multipartWithJson")
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	public BasicResponse uploadWithJson(@ApiParam(hidden = true) FormDataMultiPart multiPart) {
+		FormDataBodyPart customerPart = multiPart.getFields("customer").get(0);
+		// Informando para o JAX-RS que este cara é um JSON (necessário caso não venha o Content-Type do client)
+		customerPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
+		// Agora posso ler o Customer como um JSON sem problemas
+		Customer customer = customerPart.getEntityAs(Customer.class);
+		List<FormDataBodyPart> files = multiPart.getFields("files");
+		BasicResponse response = new BasicResponse();
+		response.setMessage("Received " + files.size() + " file(s) and customer " + customer);
 		response.setSuccess(true);
 		return response;
 	}
