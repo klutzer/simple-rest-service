@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.xml.ws.WebServiceException;
 
 import org.glassfish.jersey.media.multipart.BodyPartEntity;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
@@ -84,7 +84,7 @@ public class FileResource {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 			return reader.lines().collect(Collectors.joining("\n"));
 		} catch (Exception e) {
-			throw new WebServiceException("Error reading file. Reason: " + e.getMessage(), e);
+			throw new WebApplicationException("Error reading file. Reason: " + e.getMessage(), e);
 		}
 	}
 }
